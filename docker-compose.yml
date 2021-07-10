@@ -1,0 +1,22 @@
+version: '2.0'
+services:
+  elasticsearch:
+    image: library/elasticsearch:7.13.2
+    container_name: elasticsearch
+    ports:
+      - "9201:9200"
+    networks:
+      - "elk"
+  logstash:
+    image: library/logstash:7.13.2
+    container_name: logstash
+    networks:
+      - "elk"
+  kibana:
+    image: library/kibana:7.13.2
+    container_name: kibana
+    networks:
+      - "elk"
+networks:
+  elk:
+    driver: bridge
