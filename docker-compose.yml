@@ -17,6 +17,8 @@ services:
     container_name: kibana
     networks:
       - "elk"
+    volumes:
+      - ./kibana/config:/usr/share/kibana/config
 networks:
   elk:
     driver: bridge
