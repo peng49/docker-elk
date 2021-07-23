@@ -3,18 +3,23 @@ services:
   elasticsearch:
     image: library/elasticsearch:7.13.2
     container_name: elasticsearch
+    mem_limit: 500M
     ports:
       - "9201:9200"
     networks:
       - "elk"
+    volumes:
+      - ./elasticsearch/config:/usr/share/elasticsearch/config
   logstash:
     image: library/logstash:7.13.2
     container_name: logstash
+    mem_limit: 200M
     networks:
       - "elk"
   kibana:
     image: library/kibana:7.13.2
     container_name: kibana
+    mem_limit: 400M
     networks:
       - "elk"
     volumes:
